@@ -1,6 +1,5 @@
-# generated
-output/*
-!output/.gitkeep
+# generated (output/ PDFs ARE committed in your private copy so you can download them from the GitHub app;
+# add `output/*.pdf` here if you prefer to keep them local)
 __pycache__/
 *.pyc
 .DS_Store
