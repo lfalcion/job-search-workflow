@@ -8,7 +8,7 @@ The customs-platform migration at Northwind. When I took it over it was nine mon
 
 How do you handle a vendor that is underperforming against contract?
 
-First I make sure the contract actually says what we think it says. At Fabrikam our hardware vendor missed two milestones and the penalty clauses had never been invoked by anyone, so there was reluctance. I documented the misses, invoked the clauses, and both were paid. The relationship survived because I paired it with a weekly joint recovery plan. The money mattered less than showing the rest of the programme that the contract was real.
+First I make sure the contract actually says what we think it says. At Northwind our automation-hardware vendor missed two milestones and the penalty clauses had never been invoked by anyone, so there was reluctance. I documented the misses, invoked the clauses, and both were paid. The relationship survived because I paired it with a weekly joint recovery plan. The money mattered less than showing the rest of the programme that the contract was real.
 
 What would you want to know from me?
 
