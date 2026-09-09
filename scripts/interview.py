@@ -218,7 +218,9 @@ def transcribe_whisper(audio: Path, model: str, lang: str) -> tuple[str, str]:
         tmp = Path(td)
         wav = to_wav16k(audio, tmp)
         outbase = tmp / "out"
-        cmd = [cli, "-m", str(mpath), "-f", str(wav), "-l", lang, "-otxt", "-of", str(outbase), "-np"]
+        # The initial prompt nudges whisper to keep punctuation and capitalisation (it otherwise drops them on some clips).
+        cmd = [cli, "-m", str(mpath), "-f", str(wav), "-l", lang, "-otxt", "-of", str(outbase), "-np",
+               "--prompt", "Hello. This is a transcript of a conversation, with punctuation and capital letters."]
         print("$", " ".join(cmd[:1] + ["-m", mpath.name, "-f", wav.name, "-l", lang]))
         res = subprocess.run(cmd, capture_output=True, text=True)
         if res.returncode != 0:
