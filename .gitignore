@@ -1,0 +1,22 @@
+# generated
+output/*
+!output/.gitkeep
+__pycache__/
+*.pyc
+.DS_Store
+
+# interviews: audio and local state never leave your machine
+interviews/inbox/*
+!interviews/inbox/.gitkeep
+interviews/.processed.json
+*.m4a
+*.mp3
+*.wav
+*.aiff
+*.caf
+*.ogg
+*.flac
+
+# working files the agent may create
+cv.json
+/tmp/

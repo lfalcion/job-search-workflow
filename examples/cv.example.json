@@ -1,0 +1,62 @@
+{
+  "name": "Alex Example",
+  "headline": "Senior Programme Manager | Enterprise delivery, regulated industries",
+  "contact": "Amsterdam, Netherlands | +31 6 0000 0000 | alex.example@example.com | linkedin.com/in/alex-example",
+  "summary": "Programme manager with 9 years delivering multi-team technology and operations change in logistics and healthcare. Ran portfolios up to EUR 12M and 60 people across four countries, with a record of recovering late programmes and landing them within revised budget. Comfortable owning the plan, the governance and the difficult conversation. PRINCE2 and SAFe RTE certified.",
+  "sections": [
+    {
+      "type": "experience",
+      "title": "Professional Experience",
+      "items": [
+        {
+          "title": "Senior Programme Manager",
+          "company_line": "Northwind Logistics | Rotterdam, Netherlands | Mar 2022 - Present",
+          "bullets": [
+            "Own a EUR 12M warehouse-automation programme across 3 sites and 6 vendor teams; delivered phase 1 on time and 4% under budget",
+            "Recovered a 9-month-late customs-platform migration by re-baselining scope with the CFO and cutting 14 low-value features; went live 11 weeks after re-baseline",
+            "Introduced a fortnightly portfolio review and a single risk register; escalations to the steering committee fell 60% in two quarters",
+            "Manage 4 project managers; two promoted within 18 months"
+          ]
+        },
+        {
+          "title": "Project Manager",
+          "company_line": "Fabrikam Health | Utrecht, Netherlands | Jan 2019 - Feb 2022",
+          "bullets": [
+            "Delivered an electronic-patient-record rollout to 11 clinics (2,300 users) with zero unplanned downtime during cut-over",
+            "Ran vendor selection and a EUR 3.4M contract negotiation; secured a 12% reduction against the initial quote",
+            "Built the change-management plan (training, super-users, floor-walking) that took adoption to 94% within 30 days"
+          ]
+        },
+        {
+          "title": "Business Analyst, then Junior Project Manager",
+          "company_line": "Contoso Energy | Eindhoven, Netherlands | Sep 2016 - Dec 2018",
+          "bullets": [
+            "Mapped billing processes for a system replacement and wrote the requirements pack used by 3 delivery teams",
+            "Coordinated a 12-person data-migration workstream through 4 rehearsals to a clean go-live"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "skills",
+      "title": "Skills",
+      "rows": [
+        {"label": "Delivery & governance", "content": "Programme and portfolio management | Budget and vendor management | Risk and dependency management | Steering committees | Re-baselining and recovery"},
+        {"label": "Methods", "content": "PRINCE2 | SAFe (RTE) | Scrum | Stage-gate | OKRs"},
+        {"label": "Domains", "content": "Logistics and warehouse automation | Healthcare IT | Utilities billing"},
+        {"label": "Tools", "content": "MS Project | Jira | Confluence | Power BI | ServiceNow"},
+        {"label": "Languages", "content": "Dutch (native) | English (fluent) | German (B1)"}
+      ]
+    },
+    {
+      "type": "lines",
+      "title": "Education & Certifications",
+      "lines": [
+        "MSc Industrial Engineering & Management | University of Twente | 2016",
+        "PRINCE2 Practitioner (2019) | SAFe Release Train Engineer (2023) | Prosci Change Management (2021)"
+      ]
+    }
+  ],
+  "output": "Alex Example - CV - Acme Group - Programme Manager.pdf",
+  "max_pages": 2
+}

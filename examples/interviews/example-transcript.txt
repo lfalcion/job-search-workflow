@@ -1,0 +1,25 @@
+Thanks for making the time, Alex. I'm Priya, VP Supply Chain Transformation at Acme. I've read your CV, so let's not do a full walk-through. Give me two minutes on where you are now and why this role.
+
+Sure. I'm a Senior Programme Manager at Northwind Logistics, where I own a twelve-million-euro warehouse-automation programme across three sites and six vendor teams. Phase one landed on time and four percent under budget. Before that I ran an electronic-patient-record rollout for Fabrikam Health across eleven clinics with zero unplanned downtime at cut-over. This role is interesting to me because it is the same shape as what I do now, WMS plus automation across multiple sites and vendors, at a larger scale and earlier in the programme, where governance is still being set up. That is the part I am best at.
+
+Good. Tell me about a programme that was in trouble when you got it, and what you did.
+
+The customs-platform migration at Northwind. When I took it over it was nine months late and the steering committee had stopped trusting the dates. I spent the first two weeks re-baselining: I went line by line through the scope with the CFO and the head of customs operations and we cut fourteen features that nobody could tie to a compliance need or a cost. Then I gave the committee one date and one risk register instead of four workstream reports. We went live eleven weeks after the re-baseline. The thing I would do differently is involve the CFO earlier. I waited for the steering committee to ask.
+
+How do you handle a vendor that is underperforming against contract?
+
+First I make sure the contract actually says what we think it says. At Fabrikam our hardware vendor missed two milestones and the penalty clauses had never been invoked by anyone, so there was reluctance. I documented the misses, invoked the clauses, and both were paid. The relationship survived because I paired it with a weekly joint recovery plan. The money mattered less than showing the rest of the programme that the contract was real.
+
+What would you want to know from me?
+
+Two things. Why is the role open now, and what does the steering committee escalate most today?
+
+Fair. The previous programme manager moved to a group role in June. The committee escalates vendor slippage and the site readiness of operations, usually in that order.
+
+That is useful. On site readiness, is there an operations change lead in the structure, or would that sit with the programme?
+
+Today it sits with the programme, which is one reason we want someone with change-management experience.
+
+Then my Fabrikam work is directly relevant. I would want to talk about that in the next round. Thank you, Priya. I want this role. It is the programme I know how to run, at the scale I want to run it at.
+
+Thanks Alex. Our recruiter will be in touch about the panel stage by the end of the week.
