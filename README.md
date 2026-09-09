@@ -9,12 +9,21 @@ paste a JD  ──►  agent scores fit, flags gates, tailors by selection  ─�
 record call ──►  scripts/interview.py (local whisper.cpp)  ──►  interviews/transcripts/*.md  ──►  agent review + patterns + tracker
 ```
 
-## Fastest path: let your agent set you up (no terminal skills needed)
-1. **Install an agent** if you don't have one: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (macOS, Windows, Linux; desktop app, terminal, or in your IDE). Any agent that reads `AGENTS.md` also works.
-2. **Make your private copy of this repo:** on this page click **Use this template → Create a new repository**, choose **Private**, then open that repository in your agent (Claude Code: *Open folder* / `claude` in the cloned folder; the web app can open the GitHub repo directly).
+## Choose your path
+| You are… | Use | Needs | Time to first CV |
+|---|---|---|---|
+| **New to all of this** (never used a terminal, GitHub or an AI agent) | [**No-install edition**](no-install/README.md): a Claude.ai Project; CVs come back as Word/PDF files in the chat; your phone transcribes interviews | a free claude.ai account | ~15 min |
+| **Comfortable installing an app**, but no GitHub or terminal | [**Desktop edition**](docs/desktop-edition.md): download the ZIP, open the folder in the Claude Code desktop app, type `setup` | Claude Pro/Max | ~20 min |
+| **Comfortable with GitHub** | **Full edition** (below): private copy of this template, `setup` in your agent, phone workflow via GitHub | Claude Pro/Max or another agent, GitHub | ~20 min |
+
+All three use the same method and the same two files about you (`master.md`, `profile.md`), so you can start simple and move up later without redoing anything.
+
+## Full edition: let your agent set you up
+1. **Install an agent** if you don't have one: [Claude Code](https://code.claude.com/docs/en/desktop) (macOS, Windows, Linux; desktop app, terminal, or in your IDE). Any agent that reads `AGENTS.md` also works.
+2. **Make your private copy of this repo:** click **Use this template → Create a new repository**, choose **Private**, then open that repository in your agent (Claude Code desktop: *Code* tab → *Project folder*; terminal: `claude` in the cloned folder; the web app can open the GitHub repo directly).
 3. **Type one word:** `setup`
 
-The agent checks your computer, installs what is missing after asking you, turns your existing CV into the master file, asks you a handful of questions to build your profile, renders a test PDF, and tells you the two phrases you will use from then on: `tailor cv …` and `review interview …`. Ten to twenty minutes, mostly answering questions about yourself.
+The agent checks your computer, installs what is missing after asking you, turns your existing CV into the master file, asks you a handful of questions to build your profile, renders a test PDF, and tells you the two phrases you will use from then on: `tailor cv …` and `review interview …`.
 
 ## Manual quickstart (if you prefer the terminal)
 macOS, Windows (PowerShell) and Linux. Use `python` instead of `python3` on Windows.
@@ -39,7 +48,8 @@ Full walkthrough: [`SETUP.md`](SETUP.md). The method itself: [`docs/workflow-cv.
 | `scripts/setup_check.py` | One command that tells you what is missing and installs it (macOS, Windows, Linux). |
 | `interviews/` | `inbox/` (drop recordings), `transcripts/`, `reviews/`. |
 | `examples/` | Synthetic persona "Alex Example": profile, master CV, JD, CV spec + rendered PDF, interview transcript + review. |
-| `docs/` | Method, agent guide, privacy notes. |
+| `docs/` | Method, agent guide, desktop edition, privacy notes. |
+| `no-install/` | The Claude.ai Project edition: instructions to paste, tracker template, phone-transcription guide. |
 
 ## Design principles
 - **Tailor by selection, never by mirroring.** The agent chooses which experiences lead and which bullets exist; it never echoes JD phrases. A CV should read as if it happens to fit.

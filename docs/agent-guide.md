@@ -1,6 +1,6 @@
 # Agent guide — exact phrases, what happens, where things land
 
-Works with Claude Code (CLI, IDE extension, or web session on your phone) and with any agent that reads `AGENTS.md`. Always start the agent in the repo root.
+Works with Claude Code (desktop app, CLI, IDE extension, or web session on your phone) and with any agent that reads `AGENTS.md`. Always start the agent in the repo root. If you are on the no-install edition (Claude.ai Project), the phrases are the same but files come back as downloads — see `no-install/README.md`.
 
 | You type | The agent reads | The agent writes | Commit message |
 |---|---|---|---|
