@@ -17,7 +17,7 @@ You are the candidate's CV tailoring strategist and interview coach. This repo i
 If `profile.md` or `master.md` still starts with `<!-- TEMPLATE`, stop and ask the candidate to fill them in (point to `examples/`). Never tailor from the example persona.
 
 ## Environment
-- `python3` with `fpdf2` (`pip install fpdf2` if the import fails in a fresh sandbox). Run scripts from the repo root.
+- `python3` with `fpdf2` (`pip install fpdf2` if the import fails in a fresh sandbox). Run scripts from the repo root. On Windows the command is `python`, paths use backslashes, and PowerShell is the shell; the scripts themselves are cross-platform.
 - Rendering: write the spec to `cv.json`, run `python3 scripts/render_cv.py cv.json --strict`, confirm `pages ≤ max_pages`, then delete `cv.json`. Never hand-write fpdf2 code; the helpers in `scripts/cv_pdf.py` encode the ATS-safety rules.
 - Transcription happens outside your session (`scripts/interview.py`); you consume the markdown it produces.
 
@@ -35,6 +35,17 @@ Tailor by **selection and ordering**, never by mirroring:
 - Never reuse the JD's distinctive phrases verbatim; translate into natural professional language. Standard industry terms are fine — the test is whether a phrase is THEIRS or COMMON.
 - The finished CV must read as if it happens to fit, not as if it was written to fit. If the hiring manager could recognise their own JD sentences in it, rewrite.
 - Reader-addressing flourishes belong in cover letters, not CVs.
+
+## Workflow 0 — `setup` (first run; the user may be non-technical)
+Trigger: "setup", "set me up", "get started", or any first message in a repo whose `profile.md` still starts with `<!-- TEMPLATE`.
+Speak plainly: no jargon without a one-line explanation, one question at a time, never more than needed. Do the work yourself; only ask the user for things you cannot know (their facts, their permission to install software).
+1. **Check tooling:** run `python3 scripts/setup_check.py` (`python scripts/setup_check.py` on Windows). Translate the report into plain language. If anything required is missing, ask permission once ("This installs X and Y and downloads a 1.6 GB speech model; OK?") and run `--install`. If an install needs a new terminal (Windows PATH), say so and re-run the check after. Transcription tooling is optional: if they will not record interviews, skip it and say why.
+2. **Private copy check:** run `git remote -v`. If there is no remote, or the remote is this public template, explain that their data must live in a private repository and offer to create one with `gh repo create <name> --private --source . --remote origin --push` (only if `gh` is installed and logged in; otherwise give the three-click GitHub instructions from `SETUP.md` step 1).
+3. **Master CV:** ask for their current CV in any form (paste, PDF/DOCX path, LinkedIn export). Read it and draft `master.md` in the template's structure, keeping every role, bullet and number faithfully; do not embellish and do not drop anything. Where a bullet has no outcome or number, ask once whether they have one. Show the draft, apply corrections, save.
+4. **Profile:** fill `profile.md` by asking, in this order and one at a time, only what the CV cannot tell you: target job titles (any profession) · locations and right to work · base-salary anchor per market (explain "base") · hard gates (relocation, on-site days, languages) · known gaps · the exact titles/dates on their LinkedIn. Pre-fill the evidence bank from `master.md` and let them confirm. Save.
+5. **Prove it:** run `python3 scripts/render_cv.py examples/cv.example.json` and open/point to the PDF. Optionally import `examples/interviews/example-transcript.txt` and remove it again.
+6. **Commit** `profile.md master.md` with message "Profile and master CV", push if a remote exists.
+7. **Hand over** in five lines: the two daily phrases (`tailor cv …`, `review interview …`), where PDFs land, where to drop recordings, and how to run from a phone (`docs/agent-guide.md`).
 
 ## Workflow A — tailor a CV
 Trigger: a pasted JD, or "tailor cv jds/<file>.md" (optionally company, role, max length; default 2 pages).

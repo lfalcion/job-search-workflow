@@ -1,11 +1,13 @@
 # SETUP — from nothing to a tailored CV and a reviewed interview
 
-Follow in order. Commands are for macOS with Homebrew; Linux notes where they differ. Budget: 30 minutes plus the time to write your master CV.
+**Shortcut:** create your private copy (step 1), open it in your agent, type `setup`. The agent performs steps 2–6 with you. The rest of this page is the manual route and the reference for what the agent does.
+
+Commands are shown for macOS/Linux (`python3`) with the Windows PowerShell form where it differs (`python`, backslashes). Budget: 30 minutes plus the time to write your master CV.
 
 ## 0. Prerequisites
-- A GitHub account, `git`, and Python 3.9+ (`python3 --version`).
-- An agent that can read files and run shell commands in a folder: Claude Code (`npm i -g @anthropic-ai/claude-code`, or the web app / IDE extension), or another agent that follows `AGENTS.md`.
-- Optional, for transcribing recordings locally: Homebrew (macOS) or a way to build whisper.cpp (Linux).
+- A GitHub account, `git`, and Python 3.9+ (`python3 --version`; Windows: `python --version`, install from python.org or the Microsoft Store and tick *Add to PATH*).
+- An agent that can read files and run commands in a folder: Claude Code (desktop app for macOS/Windows, `npm i -g @anthropic-ai/claude-code` or `winget install Anthropic.ClaudeCode`, the web app, or the IDE extension), or another agent that follows `AGENTS.md`.
+- Optional, for transcribing recordings locally: nothing else — `setup_check.py --install` fetches ffmpeg and whisper.cpp for your OS (Homebrew on macOS, winget + prebuilt binary on Windows, prebuilt binary on Linux).
 
 ## 1. Create your private copy
 On GitHub, open this repo → **Use this template** → **Create a new repository** → name it, set **Private**. Then:
@@ -23,10 +25,12 @@ python3 -m pip install fpdf2
 ```
 Everything, including local transcription (downloads a ~1.6 GB Whisper model to `~/.cache/whisper-cpp/`):
 ```bash
-python3 scripts/setup_check.py --install
+python3 scripts/setup_check.py --install            # Windows: python scripts\setup_check.py --install
 # smaller/faster model instead:  python3 scripts/setup_check.py --install --model medium
 ```
-Linux: `sudo apt install ffmpeg`, build [whisper.cpp](https://github.com/ggml-org/whisper.cpp) so `whisper-cli` is on your PATH, then run the check again.
+- macOS: uses Homebrew for ffmpeg and whisper.cpp.
+- Windows: installs ffmpeg with winget (open a new terminal afterwards) and unpacks the prebuilt `whisper-cli.exe` into `~/.cache/whisper-cpp/bin`.
+- Linux: prints the package-manager command for ffmpeg (needs sudo) and unpacks the prebuilt whisper.cpp binary (Ubuntu x64/arm64 builds; other distros may need to build from source).
 
 ## 3. Prove the pipeline with the example persona
 ```bash
@@ -57,7 +61,7 @@ Expected: strategic flags (gates, comp vs anchors, seniority), an initial → fi
 ## 6. First interview review
 Record the call on your phone (Voice Memos, or any recorder). Get the file onto your machine:
 - macOS: AirDrop or Save to Files → drop it into `interviews/inbox/`. If you enable iCloud sync for Voice Memos and grant your terminal Full Disk Access, `list` finds them automatically.
-- Anywhere: copy the file into `interviews/inbox/`. A pasted `.txt` transcript works too.
+- Windows/Linux/any phone: copy the file into `interviews/inbox/` (USB, cloud drive, email to yourself). A pasted `.txt` transcript works too.
 ```bash
 python3 scripts/interview.py list
 python3 scripts/interview.py import 1 --company "<Company>" --role "<Role>" --stage recruiter-screen

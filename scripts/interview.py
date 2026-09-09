@@ -52,6 +52,7 @@ AUDIO_EXT = {".m4a", ".mp3", ".wav", ".caf", ".aac", ".mp4", ".ogg", ".flac", ".
 TEXT_EXT = {".txt", ".md"}
 STAGES = ["recruiter-screen", "hiring-manager", "panel", "case", "final", "other"]
 CORE_DATA_EPOCH = dt.datetime(2001, 1, 1, tzinfo=dt.timezone.utc)
+PY_CMD = "python" if sys.platform.startswith("win") else "python3"
 
 
 # ----------------------------------------------------------------------------- helpers
@@ -187,13 +188,13 @@ def cmd_list(_: argparse.Namespace) -> None:
     for i, it in enumerate(items, 1):
         dur = fmt_duration(ffprobe_duration(it["path"])) if it["path"].suffix.lower() in AUDIO_EXT else "text"
         print(f"{i:>2}  {it['date'].strftime('%Y-%m-%d %H:%M'):<16} {dur:>6}  {it['source']:<11} {it['title']}")
-    print('\nNext: python3 scripts/interview.py import <#> --company X --role "Y" --stage <stage>')
+    print(f'\nNext: {PY_CMD} scripts/interview.py import <#> --company X --role "Y" --stage <stage>')
 
 
 # ----------------------------------------------------------------------------- backends
 def to_wav16k(audio: Path, tmp: Path) -> Path:
     if not which("ffmpeg"):
-        die("ffmpeg not found (brew install ffmpeg)")
+        die("ffmpeg not found - run: " + PY_CMD + " scripts/setup_check.py --install")
     wav = tmp / "audio16k.wav"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(audio), "-ar", "16000", "-ac", "1", "-c:a", "pcm_s16le", str(wav)],
                    check=True)
@@ -208,12 +209,14 @@ def whisper_model_path(model: str) -> Path:
 
 
 def transcribe_whisper(audio: Path, model: str, lang: str) -> tuple[str, str]:
-    cli = which("whisper-cli", "whisper-cpp", "whisper")
+    cli = which("whisper-cli", "whisper-cpp")
+    if not cli and (MODEL_DIR / "bin").exists():  # prebuilt binary unpacked by setup_check.py (Windows/Linux)
+        cli = next((str(p) for p in (MODEL_DIR / "bin").rglob("whisper-cli*") if p.is_file()), None)
     if not cli:
-        die("whisper-cli not found. Run: python3 scripts/setup_check.py --install")
+        die(f"whisper-cli not found. Run: {PY_CMD} scripts/setup_check.py --install")
     mpath = whisper_model_path(model)
     if not mpath.exists():
-        die(f"model not found: {mpath}. Run: python3 scripts/setup_check.py --install (or set WHISPER_MODEL)")
+        die(f"model not found: {mpath}. Run: {PY_CMD} scripts/setup_check.py --install (or set WHISPER_MODEL)")
     with tempfile.TemporaryDirectory() as td:
         tmp = Path(td)
         wav = to_wav16k(audio, tmp)

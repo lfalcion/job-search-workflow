@@ -9,14 +9,20 @@ paste a JD  ──►  agent scores fit, flags gates, tailors by selection  ─�
 record call ──►  scripts/interview.py (local whisper.cpp)  ──►  interviews/transcripts/*.md  ──►  agent review + patterns + tracker
 ```
 
-## Quickstart (10 minutes, macOS or Linux)
-1. **Create your private copy.** Click *Use this template* → *Create a new repository* → visibility **Private**. Clone it.
-2. **Check tooling:** `python3 scripts/setup_check.py` (add `--install` to fetch `fpdf2`, `ffmpeg`, `whisper-cpp` and a model; only `fpdf2` is required).
-3. **Fill in two files:** copy `examples/profile.example.md` → `profile.md` and `examples/master.example.md` → `master.md`, then replace every line with your own facts. `master.md` is your complete inventory; tailoring is subtraction.
-4. **Try the example first:** `python3 scripts/render_cv.py examples/cv.example.json` renders the sample CV into `output/`.
-5. **Open your agent in the repo root** (Claude Code CLI/IDE/web, or any agent that reads `AGENTS.md`) and type:
-   - `tailor cv jds/<company>-<role>.md` after saving a JD there (or just paste the JD).
-   - `review interview interviews/transcripts/<file>.md` after `python3 scripts/interview.py import <recording> --company X --role "Y" --stage hiring-manager`.
+## Fastest path: let your agent set you up (no terminal skills needed)
+1. **Install an agent** if you don't have one: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (macOS, Windows, Linux; desktop app, terminal, or in your IDE). Any agent that reads `AGENTS.md` also works.
+2. **Make your private copy of this repo:** on this page click **Use this template → Create a new repository**, choose **Private**, then open that repository in your agent (Claude Code: *Open folder* / `claude` in the cloned folder; the web app can open the GitHub repo directly).
+3. **Type one word:** `setup`
+
+The agent checks your computer, installs what is missing after asking you, turns your existing CV into the master file, asks you a handful of questions to build your profile, renders a test PDF, and tells you the two phrases you will use from then on: `tailor cv …` and `review interview …`. Ten to twenty minutes, mostly answering questions about yourself.
+
+## Manual quickstart (if you prefer the terminal)
+macOS, Windows (PowerShell) and Linux. Use `python` instead of `python3` on Windows.
+1. Create your private copy (*Use this template* → **Private**) and clone it.
+2. `python3 scripts/setup_check.py --install` — installs `fpdf2`; and, if you want local transcription, `ffmpeg`, `whisper.cpp` (Homebrew on macOS, winget + prebuilt binary on Windows, prebuilt binary on Linux) and a ~1.6 GB speech model. Only `fpdf2` is required.
+3. Copy `examples/profile.example.md` → `profile.md` and `examples/master.example.md` → `master.md`, then replace every line with your own facts. `master.md` is your complete inventory; tailoring is subtraction.
+4. `python3 scripts/render_cv.py examples/cv.example.json` renders the sample CV into `output/`.
+5. Open your agent in the repo root and type `tailor cv jds/<company>-<role>.md` (after saving a JD there, or just paste one), or `review interview interviews/transcripts/<file>.md` after `python3 scripts/interview.py import <recording> --company X --role "Y" --stage hiring-manager`.
 
 Full walkthrough: [`SETUP.md`](SETUP.md). The method itself: [`docs/workflow-cv.md`](docs/workflow-cv.md) and [`docs/workflow-interviews.md`](docs/workflow-interviews.md). Using it from a phone: [`docs/agent-guide.md`](docs/agent-guide.md).
 
@@ -30,7 +36,7 @@ Full walkthrough: [`SETUP.md`](SETUP.md). The method itself: [`docs/workflow-cv.
 | `jds/` | One markdown file per job description. |
 | `scripts/render_cv.py` | Renders an ATS-safe PDF from a JSON spec the agent writes. `scripts/cv_pdf.py` holds the layout rules. |
 | `scripts/interview.py` | `list` / `import` / `relabel` recordings → LLM-ready transcripts. Local whisper.cpp by default; optional [scriba](https://github.com/giovannialberto/scriba) backend; accepts pasted `.txt` transcripts. |
-| `scripts/setup_check.py` | One command that tells you what is missing and how to fix it. |
+| `scripts/setup_check.py` | One command that tells you what is missing and installs it (macOS, Windows, Linux). |
 | `interviews/` | `inbox/` (drop recordings), `transcripts/`, `reviews/`. |
 | `examples/` | Synthetic persona "Alex Example": profile, master CV, JD, CV spec + rendered PDF, interview transcript + review. |
 | `docs/` | Method, agent guide, privacy notes. |
@@ -43,9 +49,14 @@ Full walkthrough: [`SETUP.md`](SETUP.md). The method itself: [`docs/workflow-cv.
 - **Private by default.** Audio never enters git. Transcripts and reviews do, in your private copy only. See [`docs/privacy.md`](docs/privacy.md).
 
 ## Requirements
-- Python 3.9+ and `fpdf2` (required)
-- `ffmpeg` + `whisper-cpp` + a ggml model (optional, for local transcription; ~1.6 GB download)
-- An agent: Claude Code (CLI, IDE, or web on your phone) or any agent that reads `AGENTS.md`
+| | macOS | Windows | Linux |
+|---|---|---|---|
+| Python 3.9+ and `fpdf2` (required) | python.org or Homebrew | python.org or Microsoft Store | distro package |
+| `ffmpeg` (optional, transcription) | `brew install ffmpeg` | `winget install Gyan.FFmpeg` | `apt install ffmpeg` |
+| `whisper.cpp` + model (optional, transcription) | `brew install whisper-cpp` | prebuilt binary, fetched by `setup_check.py --install` | prebuilt binary (x64/arm64), fetched by `setup_check.py --install` |
+| An agent | Claude Code (desktop, terminal, IDE, or web on your phone) or any agent that reads `AGENTS.md` | same | same |
+
+`setup_check.py --install` does all of this for you, and the `setup` phrase makes your agent run it.
 
 ## Companion tooling
 Job discovery/scoring across career pages is a separate concern and not included here; this repo starts once you have a JD in hand.
